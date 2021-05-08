@@ -1,0 +1,94 @@
+openapi: "3.0.1"
+info:
+  title: "dev-product-service"
+  version: "2021-04-10T17:09:52Z"
+servers:
+  - url: "https://baw755wvfd.execute-api.us-east-1.amazonaws.com/{basePath}"
+    variables:
+      basePath:
+        default: "/dev"
+paths:
+  '/products/{id}':
+    get:
+      parameters:
+        -   in: path
+            name: id
+            description: product id
+            required: true
+            schema:
+              type: number
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/product'
+  '/products':
+    get:
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: "string"
+            Access-Control-Allow-Methods:
+              schema:
+                type: "string"
+            Access-Control-Allow-Headers:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/products'
+components:
+  schemas:
+    product:
+      type: object
+      properties:
+        id:
+          type: number
+        title:
+          type: string
+        tagline:
+          type: string
+        price:
+          type: number
+        budget:
+          type: number
+        revenue:
+          type: number
+        description:
+          type: string
+        vote_average:
+          type: number
+        poster_path:
+          type: string
+        genres:
+          type: array
+          items:
+            type: string
+        runtime:
+          type: number
+    products:
+      type: array
+      items:
+        $ref: '#/components/schemas/product'
