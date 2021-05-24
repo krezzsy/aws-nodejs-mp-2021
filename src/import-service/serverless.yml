@@ -5,6 +5,8 @@ provider:
   runtime: nodejs12.x
   environment:
     NODE_ENV: dev
+    BATCH_TOPIC_ARN: {"Ref": "BatchTopic"}
+    BATCH_QUEUE_ARN: {"Ref": "BatchQueue"}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -12,6 +14,18 @@ provider:
         - s3:PutObject
         - s3:GetObject
       Resource: "arn:aws:s3:::products-s3-csv/*"
+    - Effect: Allow
+      Action:
+        - sqs:*
+      Resource:
+        Fn::GetAtt:
+          - BatchQueue
+          - Arn
+    - Effect: Allow
+      Action:
+        - sns:*
+      Resource:
+        - Ref: BatchTopic
 
 plugins:
   - serverless-plugin-typescript 
@@ -39,3 +53,30 @@ functions:
           rules:
             - prefix: uploaded/
             - suffix: .csv
+  catalogBatchProcess:
+    handler: app/handler.catalogBatchProcess
+    events:
+      - sqs:
+          batchSize: 5
+          arn:
+            Fn::GetAtt:
+              - BatchQueue
+              - Arn
+
+resources:
+  Resources:
+    BatchQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:service}-catalog-queue
+    BatchTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: ${self:service}-catalog-topic
+    BatchSubscription:
+      Type: AWS::SNS::Subscription
+      Properties:
+        Endpoint: krezzsy@gmail.com
+        Protocol: email
+        TopicArn: {"Ref": "BatchTopic"}
+

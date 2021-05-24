@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91bd6200-1548-41e4-acb5-218fb39e2782" name="Default Changelist" comment="" />
+    <list default="true" id="91bd6200-1548-41e4-acb5-218fb39e2782" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/import-service/app/service/notification-service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/import-service/app/service/queue-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/import-service/app/controller/import-controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/import-service/app/controller/import-controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/import-service/app/handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/import-service/app/handler.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/import-service/app/service/import-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/import-service/app/service/import-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/import-service/serverless.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/import-service/serverless.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
   <component name="ProjectId" id="1sFoblo6qkTc5d2VN0p2vAZHo7X" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -15,11 +28,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/import-service/app/service" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.0\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="D:\dev\learn\mono-repo-aws-nodejs-mp\src\import-service\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\dev\learn\mono-repo-aws-nodejs-mp\src\import-service\app\service" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\dev\learn\mono-repo-aws-nodejs-mp\src" />
     </key>
@@ -32,11 +49,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1620477772481</updated>
-      <workItem from="1620477773620" duration="640000" />
+      <workItem from="1620477773620" duration="1365000" />
+      <workItem from="1621781855376" duration="3901000" />
+      <workItem from="1621785801045" duration="5520000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="478" y="113" width="579" height="558" key="find.popup" timestamp="1621786713504">
+      <screen x="0" y="0" width="1536" height="783" />
+    </state>
+    <state x="478" y="113" width="579" height="558" key="find.popup/0.0.1536.783/1920.0.1920.1040@0.0.1536.783" timestamp="1621786713504" />
+    <state x="425" y="177" key="run.anything.popup" timestamp="1621783123528">
+      <screen x="0" y="0" width="1536" height="783" />
+    </state>
+    <state x="425" y="177" key="run.anything.popup/0.0.1536.783/1920.0.1920.1040@0.0.1536.783" timestamp="1621783123528" />
   </component>
 </project>

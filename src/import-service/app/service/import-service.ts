@@ -1,5 +1,6 @@
 import { S3 } from 'aws-sdk';
 import csvParser from 'csv-parser';
+import { QueueService } from "./queue-service";
 
 const BUCKET_NAME = 'products-s3-csv';
 const UPD_FILES_DIR = 'uploaded';
@@ -7,9 +8,11 @@ const PARSED_FILES_DIR = 'parsed';
 
 export class ImportService {
   s3Client: S3;
+  queueService: QueueService;
 
-  constructor(s3Client: S3) {
+  constructor(s3Client: S3, queueService: QueueService) {
     this.s3Client = s3Client;
+    this.queueService = queueService;
   }
 
   async parse(filename: string): Promise<void> {
@@ -30,10 +33,10 @@ export class ImportService {
             })
             .promise();
         }))
+      .catch(err => console.log(`Error occurred: ${err}`))
   }
 
   private parseCsv(filename: string): Promise<void> {
-    const resultSet = [];
     return new Promise<void>((res) => {
       this.s3Client
         .getObject({
@@ -43,13 +46,17 @@ export class ImportService {
         .createReadStream()
         .pipe(csvParser())
         .on('data', (data) => {
-          console.log(`Parsing data: ${data}`)
-          resultSet.push(data)
+          console.log(`Parsing data: ${data}`);
+          this.queueService.publishMessage(data);
         })
-        .on('end', () => res())
+        .on('end', () => {
+          console.error('Data was parsed');
+          res()
+        })
         .on('error', (error) => {
           console.error(`Error occurred: ${error}`);
         });
-    });
+    })
+      .catch(err => console.log(`Error occurred: ${err}`));
   }
 }
